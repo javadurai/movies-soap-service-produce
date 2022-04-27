@@ -1,0 +1,39 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://test.com/producesoap"
+           targetNamespace="http://test.com/producesoap" elementFormDefault="qualified">
+
+    <xs:element name="getMovieRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="name" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getMovieResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="movie" type="tns:movie"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="movie">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="actor" type="xs:string"/>
+            <xs:element name="director" type="xs:string"/>
+            <xs:element name="makingCost" type="xs:int"/>
+            <xs:element name="hit" type="tns:hit"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="hit">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="FLOP"/>
+            <xs:enumeration value="AVERAGE"/>
+            <xs:enumeration value="HIT"/>
+            <xs:enumeration value="SUPERHIT"/>
+            <xs:enumeration value="BLOCKBUSTER"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>
